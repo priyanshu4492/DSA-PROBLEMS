@@ -1,34 +1,36 @@
-package recursion;
+public class binarySearch {
 
+        public class InnerbinarySearch (int arr[],int target){
 
-class binarySearch {
-
-    static int binarySearch(int arr[],int low,int high,int key){
-
-        if(low>high)
+        int low=0;
+        int high= arr.length-1;
+        while (low<=high) {
+            int mid = (low+high)/2;
+            if (arr[mid]==target) {
+                return mid;
+                
+            }
+            else if (target<arr[mid]) {
+                high = mid-1;
+            }else{
+                low= mid+1;
+            }
             return -1;
-        int mid = (low+high)/2;
-        if(arr[mid] == key)
-            return mid;
-        else if (key<arr[mid]) 
-            return binarySearch(arr,low,mid-1,key);
-            else 
-                return binarySearch(arr,mid+1,high,key);
             
-        
-    }
+        }
+            
+        }
 
     public static void main(String[] args) {
         
-        int arr[]= {2,5,8,12,16,23,38,56};
-        int key = 23;
+        int arr[] ={23,45,56,67,45,34};
+        int result = InnerbinarySearch(arr,67);
+        if (result != -1) {
+            System.out.println("elemet found at index "+result);
 
-        int result = binarySearch(arr,0,arr.length-1,key);
-        if (result != -1) 
+        }else{
 
-            System.out.println("element found at index"+ result);
-            else 
-                System.out.println("element not found");
-        
+            System.out.println("not found");
+        }
     }
 }
